@@ -29,7 +29,7 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
 )}`;
 ---
 
-<section class="bg-brand-blue px-4 pb-16 pt-6 sm:px-6 sm:pb-24 sm:pt-8">
+<section class="relative overflow-hidden bg-brand-blue px-4 pb-16 pt-6 sm:px-6 sm:pb-24 sm:pt-8">
   <div class="mx-auto max-w-6xl">
     <div class="flex items-center justify-between">
       <Logo />
@@ -77,22 +77,6 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
         </div>
       </div>
 
-      <div class="pointer-events-none absolute -bottom-10 -right-6 hidden h-[400px] lg:block xl:-bottom-12 xl:h-[460px]">
-        <Picture
-          src={consultorPhoto}
-          alt="Consultor da Protege Club"
-          formats={["avif", "webp"]}
-          fallbackFormat="png"
-          widths={[452, 520]}
-          sizes="520px"
-          width={520}
-          height={460}
-          loading="eager"
-          fetchpriority="high"
-          class="h-full w-auto"
-        />
-      </div>
-
       <div class="mt-4 flex justify-center lg:hidden">
         <Picture
           src={consultorPhoto}
@@ -114,5 +98,23 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
       </svg>
       {regionDisplayName}
     </p>
+  </div>
+
+  <div class="pointer-events-none absolute inset-0 hidden lg:flex">
+    <div class="mx-auto flex h-full w-full max-w-6xl items-end justify-end px-4 sm:px-6">
+      <Picture
+        src={consultorPhoto}
+        alt="Consultor da Protege Club"
+        formats={["avif", "webp"]}
+        fallbackFormat="png"
+        widths={[610, 723]}
+        sizes="723px"
+        width={723}
+        height={640}
+        loading="eager"
+        fetchpriority="high"
+        class="h-[560px] w-auto xl:h-[680px]"
+      />
+    </div>
   </div>
 </section>
