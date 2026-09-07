@@ -1,4 +1,6 @@
 ---
+import ArrowButton from "./ArrowButton.astro";
+
 const items = [
   "Mensalidade menor que o seguro tradicional",
   "Primeira mensalidade só depois de 40 dias",
@@ -8,7 +10,7 @@ const items = [
 ];
 ---
 
-<section class="bg-slate-50 px-4 py-16 sm:px-6 sm:py-24">
+<section class="px-4 py-16 sm:px-6 sm:py-24">
   <div class="mx-auto max-w-2xl">
     <h2 class="reveal-up text-center text-3xl font-bold text-brand-navy sm:text-4xl">
       Por que Rio Verde está escolhendo a Protege Club
@@ -16,7 +18,7 @@ const items = [
     <div class="mt-10 space-y-3">
       {
         items.map((text) => (
-          <div class="reveal-up flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm">
+          <div class="reveal-up flex items-center gap-4 rounded-2xl bg-slate-50 p-4">
             <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
                 <path
@@ -30,6 +32,9 @@ const items = [
           </div>
         ))
       }
+    </div>
+    <div class="mt-8 flex justify-center">
+      <ArrowButton href="#quero-proteger" label="Cotar agora" />
     </div>
   </div>
 </section>

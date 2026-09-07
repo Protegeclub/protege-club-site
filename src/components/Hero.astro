@@ -10,65 +10,77 @@ interface Props {
   startingPriceLabel: string;
   supportHoursLabel: string;
   gracePeriodDays?: number;
+  whatsappNumber: string;
 }
 
-const { regionDisplayName, headline, subheadline, startingPriceLabel, supportHoursLabel, gracePeriodDays } =
-  Astro.props;
+const {
+  regionDisplayName,
+  headline,
+  subheadline,
+  startingPriceLabel,
+  supportHoursLabel,
+  gracePeriodDays,
+  whatsappNumber,
+} = Astro.props;
+
+const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
+  "Olá! Quero saber mais sobre a proteção veicular da Protege Club."
+)}`;
 ---
 
-<section class="relative overflow-hidden bg-brand-navy px-4 pb-0 pt-10 sm:px-6 sm:pt-14">
-  <div
-    class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-blue/30 blur-3xl"
-    aria-hidden="true"
-  >
-  </div>
-  <div
-    class="pointer-events-none absolute -bottom-32 left-1/4 h-80 w-80 rounded-full bg-brand-orange/20 blur-3xl"
-    aria-hidden="true"
-  >
-  </div>
-
-  <div class="relative mx-auto max-w-6xl">
-    <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-2 lg:gap-4">
-      <div class="rounded-3xl bg-white/[0.06] p-6 backdrop-blur sm:p-12 lg:mb-16">
-        <div class="flex flex-col items-start gap-6">
-          <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
+<section class="bg-brand-blue px-4 pb-10 pt-8 sm:px-6 sm:pb-14 sm:pt-10">
+  <div class="mx-auto max-w-6xl">
+    <div class="overflow-hidden rounded-3xl bg-[#EFF8FD]">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="flex flex-col items-start gap-5 p-8 sm:p-12">
+          <p class="inline-flex items-center gap-2 rounded-full bg-brand-navy/5 px-4 py-1.5 text-sm font-medium text-brand-navy">
             <span class="relative flex h-2 w-2">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex h-2 w-2 rounded-full bg-green-400"></span>
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
             </span>
             {supportHoursLabel}
           </p>
-          <h1 class="max-w-xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+          <h1 class="max-w-lg text-4xl font-extrabold leading-tight text-brand-navy sm:text-5xl">
             {headline}
           </h1>
-          <p class="max-w-xl text-lg text-white/80">
+          <p class="max-w-md text-lg text-slate-600">
             {subheadline}
           </p>
-          <p class="text-base text-white/90">
+          <p class="text-base text-slate-700">
             <span class="font-bold text-brand-orange">{startingPriceLabel}</span>
             {gracePeriodDays && ` · 1ª mensalidade em ${gracePeriodDays} dias`}
           </p>
-          <ArrowButton href="#quero-proteger" label="Quero economizar agora" />
+          <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <ArrowButton href="#quero-proteger" label="Quero economizar agora" />
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex w-full items-center justify-center rounded-full border border-brand-navy/15 px-7 py-4 text-lg font-bold text-brand-navy transition hover:bg-brand-navy/5 sm:w-auto"
+            >
+              Falar no WhatsApp
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="pointer-events-none relative hidden justify-self-center lg:flex lg:justify-self-end">
-        <Picture
-          src={consultorPhoto}
-          alt="Consultor da Protege Club"
-          formats={["avif", "webp"]}
-          fallbackFormat="png"
-          widths={[400, 600]}
-          sizes="(min-width: 1024px) 500px, 0px"
-          width={520}
-          loading="lazy"
-          class="w-full max-w-[420px] xl:max-w-[500px]"
-        />
+        <div class="relative flex items-end justify-center px-6 pt-0 lg:justify-end lg:pr-4">
+          <Picture
+            src={consultorPhoto}
+            alt="Consultor da Protege Club"
+            formats={["avif", "webp"]}
+            fallbackFormat="png"
+            widths={[360, 520]}
+            sizes="(min-width: 1024px) 420px, 320px"
+            width={420}
+            loading="eager"
+            fetchpriority="high"
+            class="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px]"
+          />
+        </div>
       </div>
     </div>
 
-    <p class="mt-4 flex items-center gap-1.5 pb-8 text-sm font-medium text-white/60 lg:pb-0">
+    <p class="mt-4 flex items-center gap-1.5 text-sm font-medium text-white/80">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
         <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
       </svg>
