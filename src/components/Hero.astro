@@ -1,4 +1,8 @@
 ---
+import { Picture } from "astro:assets";
+import ArrowButton from "./ArrowButton.astro";
+import consultorPhoto from "../assets/photos/consultor-hero.png";
+
 interface Props {
   regionDisplayName: string;
   headline: string;
@@ -12,7 +16,7 @@ const { regionDisplayName, headline, subheadline, startingPriceLabel, supportHou
   Astro.props;
 ---
 
-<section class="relative overflow-hidden bg-brand-navy text-white">
+<section class="relative overflow-hidden bg-brand-navy px-4 pb-0 pt-10 sm:px-6 sm:pt-14">
   <div
     class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-blue/30 blur-3xl"
     aria-hidden="true"
@@ -24,52 +28,51 @@ const { regionDisplayName, headline, subheadline, startingPriceLabel, supportHou
   >
   </div>
 
-  <div class="relative mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-20 sm:px-6 sm:py-28">
-    <p class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-brand-blue">
+  <div class="relative mx-auto max-w-6xl">
+    <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-2 lg:gap-4">
+      <div class="rounded-3xl bg-white/[0.06] p-6 backdrop-blur sm:p-12 lg:mb-16">
+        <div class="flex flex-col items-start gap-6">
+          <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-green-400"></span>
+            </span>
+            {supportHoursLabel}
+          </p>
+          <h1 class="max-w-xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+            {headline}
+          </h1>
+          <p class="max-w-xl text-lg text-white/80">
+            {subheadline}
+          </p>
+          <p class="text-base text-white/90">
+            <span class="font-bold text-brand-orange">{startingPriceLabel}</span>
+            {gracePeriodDays && ` · 1ª mensalidade em ${gracePeriodDays} dias`}
+          </p>
+          <ArrowButton href="#quero-proteger" label="Quero economizar agora" />
+        </div>
+      </div>
+
+      <div class="pointer-events-none relative hidden justify-self-center lg:flex lg:justify-self-end">
+        <Picture
+          src={consultorPhoto}
+          alt="Consultor da Protege Club"
+          formats={["avif", "webp"]}
+          fallbackFormat="png"
+          widths={[400, 600]}
+          sizes="(min-width: 1024px) 500px, 0px"
+          width={520}
+          loading="lazy"
+          class="w-full max-w-[420px] xl:max-w-[500px]"
+        />
+      </div>
+    </div>
+
+    <p class="mt-4 flex items-center gap-1.5 pb-8 text-sm font-medium text-white/60 lg:pb-0">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
         <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
       </svg>
       {regionDisplayName}
     </p>
-    <h1 class="max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-      {headline}
-    </h1>
-    <p class="max-w-xl text-lg text-white/80 sm:text-xl">
-      {subheadline}
-    </p>
-    <a
-      href="#quero-proteger"
-      class="rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition hover:brightness-110"
-    >
-      Quero economizar agora
-    </a>
-
-    <dl class="mt-4 grid grid-cols-1 gap-4 text-sm sm:grid-cols-3">
-      <div class="flex items-center gap-2">
-        <dt class="sr-only">Preço</dt>
-        <dd class="flex items-center gap-2 text-white/90">
-          <span class="text-brand-orange">💰</span>
-          {startingPriceLabel}
-        </dd>
-      </div>
-      <div class="flex items-center gap-2">
-        <dt class="sr-only">Assistência</dt>
-        <dd class="flex items-center gap-2 text-white/90">
-          <span class="text-brand-orange">🛟</span>
-          {supportHoursLabel}
-        </dd>
-      </div>
-      {
-        gracePeriodDays && (
-          <div class="flex items-center gap-2">
-            <dt class="sr-only">Carência</dt>
-            <dd class="flex items-center gap-2 text-white/90">
-              <span class="text-brand-orange">🗓️</span>
-              1ª mensalidade em {gracePeriodDays} dias
-            </dd>
-          </div>
-        )
-      }
-    </dl>
   </div>
 </section>

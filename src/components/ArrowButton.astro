@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: "orange" | "white";
+  target?: "_blank";
+  class?: string;
+}
+
+const { href, label, variant = "orange", target, class: className = "" } = Astro.props;
+const variantClass =
+  variant === "orange"
+    ? "bg-brand-orange text-white hover:brightness-110"
+    : "bg-white text-brand-orange hover:brightness-95";
+---
+
+<a
+  href={href}
+  target={target}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
+  class={`flex w-full items-center rounded-full px-7 py-4 text-lg font-bold transition sm:w-auto ${variantClass} ${className}`}
+>
+  <span class="flex-grow text-left">{label}</span>
+  <svg class="ml-4 h-4 w-4 shrink-0" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M10.498 5.736 6.624 1.86a.9.9 0 011.27-1.27l5.55 5.55a.9.9 0 010 1.27l-5.55 5.55a.9.9 0 01-1.27-1.27l3.875-3.875H1.095a.9.9 0 010-1.8h9.403z"
+      fill="currentColor"
+    />
+  </svg>
+</a>
