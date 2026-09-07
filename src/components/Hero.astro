@@ -30,7 +30,7 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
 ---
 
 <section class="relative overflow-hidden bg-brand-blue px-4 pb-16 pt-6 sm:px-6 sm:pb-24 sm:pt-8">
-  <div class="mx-auto max-w-6xl">
+  <div class="mx-auto max-w-7xl">
     <div class="flex items-center justify-between">
       <Logo />
       <a
@@ -43,9 +43,31 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
       </a>
     </div>
 
-    <div class="relative mt-16">
-      <div class="rounded-3xl bg-[#EFF8FD] p-8 sm:p-12">
-        <div class="flex max-w-lg flex-col items-start gap-5">
+    <div class="relative mt-10">
+      <div class="relative overflow-hidden rounded-3xl bg-[#EFF8FD] p-6 sm:p-8">
+        <svg
+          class="pointer-events-none absolute right-[28%] top-1/2 hidden h-[90%] w-[38%] -translate-y-1/2 text-brand-navy/[0.07] md:block"
+          viewBox="0 0 260 320"
+          fill="none"
+          aria-hidden="true"
+        >
+          <g stroke="currentColor" stroke-width="2">
+            <path d="M0 40H260" /><path d="M0 110H260" /><path d="M0 175H260" />
+            <path d="M0 245H260" /><path d="M0 300H260" />
+            <path d="M30 0V320" /><path d="M110 0V320" /><path d="M190 0V320" />
+          </g>
+          <g transform="translate(110 175)">
+            <circle r="36" fill="currentColor" opacity="0.5" />
+            <g transform="translate(-16 -10)" fill="currentColor" opacity="0.95">
+              <rect x="0" y="7" width="32" height="11" rx="3" />
+              <rect x="6" y="0" width="20" height="9" rx="2" />
+              <circle cx="7" cy="19" r="3.5" />
+              <circle cx="25" cy="19" r="3.5" />
+            </g>
+          </g>
+        </svg>
+
+        <div class="relative flex max-w-lg flex-col items-start gap-4">
           <p class="inline-flex items-center gap-2 rounded-full bg-brand-navy/5 px-4 py-1.5 text-sm font-medium text-brand-navy">
             <span class="relative flex h-2 w-2">
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
@@ -101,7 +123,7 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
   </div>
 
   <div class="pointer-events-none absolute inset-0 hidden lg:flex">
-    <div class="mx-auto flex h-full w-full max-w-6xl items-end justify-end px-4 sm:px-6">
+    <div class="mx-auto flex h-full w-full max-w-7xl items-end justify-end px-4 sm:px-6">
       <Picture
         src={consultorPhoto}
         alt="Consultor da Protege Club"
@@ -113,7 +135,7 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
         height={640}
         loading="eager"
         fetchpriority="high"
-        class="h-[560px] w-auto xl:h-[680px]"
+        class="h-[520px] w-auto xl:h-[620px]"
       />
     </div>
   </div>
