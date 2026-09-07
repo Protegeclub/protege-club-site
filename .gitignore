@@ -16,6 +16,7 @@ dist/
 
 # cloudflare
 .wrangler/
+worker-configuration.d.ts
 
 # editor/os
 .DS_Store
