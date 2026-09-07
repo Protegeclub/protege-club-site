@@ -13,6 +13,11 @@ const regions = defineCollection({
     protectedResidentsCount: z.number(),
     whatsappNumber: z.string(),
     testimonialsRef: z.array(z.string()).default([]),
+    tagline: z.string(),
+    startingPriceLabel: z.string(),
+    dailyPriceHint: z.string(),
+    gracePeriodDays: z.number().optional(),
+    supportHoursLabel: z.string(),
   }),
 });
 
@@ -23,6 +28,7 @@ const testimonials = defineCollection({
     city: z.string(),
     quote: z.string(),
     vehicle: z.string().optional(),
+    rating: z.number().min(1).max(5).default(5),
   }),
 });
 

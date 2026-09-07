@@ -1,17 +1,35 @@
 ---
 interface Props {
+  regionDisplayName: string;
   headline: string;
   subheadline: string;
-  whatsappNumber: string;
+  startingPriceLabel: string;
+  supportHoursLabel: string;
+  gracePeriodDays?: number;
 }
 
-const { headline, subheadline } = Astro.props;
+const { regionDisplayName, headline, subheadline, startingPriceLabel, supportHoursLabel, gracePeriodDays } =
+  Astro.props;
 ---
 
 <section class="relative overflow-hidden bg-brand-navy text-white">
-  <div class="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-20 sm:px-6 sm:py-28">
-    <p class="rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-brand-blue">
-      Proteção veicular em Rio Verde, GO
+  <div
+    class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-blue/30 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-32 left-1/4 h-80 w-80 rounded-full bg-brand-orange/20 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-20 sm:px-6 sm:py-28">
+    <p class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-brand-blue">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+      </svg>
+      {regionDisplayName}
     </p>
     <h1 class="max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
       {headline}
@@ -25,5 +43,33 @@ const { headline, subheadline } = Astro.props;
     >
       Quero economizar agora
     </a>
+
+    <dl class="mt-4 grid grid-cols-1 gap-4 text-sm sm:grid-cols-3">
+      <div class="flex items-center gap-2">
+        <dt class="sr-only">Preço</dt>
+        <dd class="flex items-center gap-2 text-white/90">
+          <span class="text-brand-orange">💰</span>
+          {startingPriceLabel}
+        </dd>
+      </div>
+      <div class="flex items-center gap-2">
+        <dt class="sr-only">Assistência</dt>
+        <dd class="flex items-center gap-2 text-white/90">
+          <span class="text-brand-orange">🛟</span>
+          {supportHoursLabel}
+        </dd>
+      </div>
+      {
+        gracePeriodDays && (
+          <div class="flex items-center gap-2">
+            <dt class="sr-only">Carência</dt>
+            <dd class="flex items-center gap-2 text-white/90">
+              <span class="text-brand-orange">🗓️</span>
+              1ª mensalidade em {gracePeriodDays} dias
+            </dd>
+          </div>
+        )
+      }
+    </dl>
   </div>
 </section>

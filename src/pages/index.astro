@@ -13,17 +13,33 @@ import Footer from "../components/Footer.astro";
 
 const region = await getEntry("regions", "rio-verde-go");
 if (!region) throw new Error("Região 'rio-verde-go' não encontrada em src/content/regions");
-const { heroHeadline, heroSubheadline, whatsappNumber, protectedResidentsCount, displayName, testimonialsRef } =
-  region.data;
+const {
+  heroHeadline,
+  heroSubheadline,
+  whatsappNumber,
+  protectedResidentsCount,
+  displayName,
+  testimonialsRef,
+  startingPriceLabel,
+  supportHoursLabel,
+  gracePeriodDays,
+} = region.data;
 ---
 
 <BaseLayout
-  title="Protege Club | Proteção Veicular em Rio Verde, GO"
-  description="Proteção veicular em Rio Verde, GO com menos burocracia e mais economia. Fale agora com um consultor da Protege Club."
+  title="Protege Club | Proteção Veicular em Rio Verde, GO a partir de R$69,90/mês"
+  description="Você conquista o seu veículo, a Protege Club protege. Proteção veicular em Rio Verde, GO a partir de R$69,90/mês, com assistência 24h. Fale agora com um consultor."
 >
   <Header whatsappNumber={whatsappNumber} />
   <main>
-    <Hero headline={heroHeadline} subheadline={heroSubheadline} whatsappNumber={whatsappNumber} />
+    <Hero
+      regionDisplayName={displayName}
+      headline={heroHeadline}
+      subheadline={heroSubheadline}
+      startingPriceLabel={startingPriceLabel}
+      supportHoursLabel={supportHoursLabel}
+      gracePeriodDays={gracePeriodDays}
+    />
     <SocialProofCounter count={protectedResidentsCount} regionName={displayName} />
     <HowItWorks />
     <SavingsCalculatorSection regionSlug={region.data.slug} />

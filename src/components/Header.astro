@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/brand/logo.png";
+import Logo from "./Logo.astro";
 
 interface Props {
   whatsappNumber: string;
@@ -12,9 +11,9 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
 )}`;
 ---
 
-<header class="sticky top-0 z-50 bg-brand-navy/95 backdrop-blur">
+<header class="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-    <Image src={logo} alt="Protege Club" width={160} height={40} class="h-9 w-auto" />
+    <Logo />
     <a
       href={waHref}
       target="_blank"
