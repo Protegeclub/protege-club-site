@@ -1,4 +1,6 @@
 ---
+import CounterUp from "../islands/ScrollFx/CounterUp";
+
 interface Props {
   count: number;
   regionName: string;
@@ -9,8 +11,8 @@ const { count, regionName } = Astro.props;
 
 <section class="bg-brand-blue/5 py-10">
   <div class="mx-auto max-w-6xl px-4 text-center sm:px-6">
-    <p class="text-4xl font-extrabold text-brand-navy sm:text-5xl" data-social-proof-count={count}>
-      +{count.toLocaleString("pt-BR")}
+    <p class="text-4xl font-extrabold text-brand-navy sm:text-5xl">
+      <CounterUp client:visible target={count} />
     </p>
     <p class="mt-2 text-lg text-slate-600">moradores de {regionName} já protegidos</p>
   </div>
