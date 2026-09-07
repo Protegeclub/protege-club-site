@@ -77,18 +77,19 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
         </div>
       </div>
 
-      <div class="pointer-events-none absolute -top-6 -right-14 hidden w-[420px] lg:block lg:w-[480px] xl:-right-24 xl:w-[560px]">
+      <div class="pointer-events-none absolute -bottom-10 -right-6 hidden h-[400px] lg:block xl:-bottom-12 xl:h-[460px]">
         <Picture
           src={consultorPhoto}
           alt="Consultor da Protege Club"
           formats={["avif", "webp"]}
           fallbackFormat="png"
-          widths={[420, 560]}
-          sizes="560px"
-          width={560}
+          widths={[452, 520]}
+          sizes="520px"
+          width={520}
+          height={460}
           loading="eager"
           fetchpriority="high"
-          class="w-full"
+          class="h-full w-auto"
         />
       </div>
 
