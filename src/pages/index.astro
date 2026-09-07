@@ -5,6 +5,8 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import SocialProofCounter from "../components/SocialProofCounter.astro";
 import HowItWorks from "../components/HowItWorks.astro";
+import Coverage from "../components/Coverage.astro";
+import CTABanner from "../components/CTABanner.astro";
 import SavingsCalculatorSection from "../components/SavingsCalculatorSection.astro";
 import Testimonials from "../components/Testimonials.astro";
 import LeadFormSection from "../components/LeadFormSection.astro";
@@ -21,7 +23,9 @@ const {
   displayName,
   testimonialsRef,
   startingPriceLabel,
+  startingPriceValue,
   supportHoursLabel,
+  supportHoursValue,
   gracePeriodDays,
 } = region.data;
 ---
@@ -40,10 +44,18 @@ const {
       supportHoursLabel={supportHoursLabel}
       gracePeriodDays={gracePeriodDays}
     />
-    <SocialProofCounter count={protectedResidentsCount} regionName={displayName} />
+    <SocialProofCounter
+      count={protectedResidentsCount}
+      regionName={displayName}
+      startingPriceValue={startingPriceValue}
+      supportHoursValue={supportHoursValue}
+    />
     <HowItWorks />
+    <Coverage />
+    <CTABanner text="Pronto para pagar menos e ficar protegido?" />
     <SavingsCalculatorSection regionSlug={region.data.slug} />
     <Testimonials testimonialIds={testimonialsRef} />
+    <CTABanner text="Veja quanto um consultor pode economizar pra você." />
     <LeadFormSection
       regionSlug={region.data.slug}
       regionDisplayName={displayName}

@@ -7,9 +7,11 @@
   "heroHeadline": "Você conquista o seu veículo. A gente protege.",
   "heroSubheadline": "Proteção veicular em Rio Verde por menos de R$5 por dia, com assistência 24h e sua primeira mensalidade só daqui a 40 dias.",
   "startingPriceLabel": "A partir de R$69,90/mês",
+  "startingPriceValue": "R$69,90",
   "dailyPriceHint": "menos de R$5 por dia",
   "gracePeriodDays": 40,
   "supportHoursLabel": "Assistência 24 horas",
+  "supportHoursValue": "24h",
   "protectedResidentsCount": 1200,
   "whatsappNumber": "+556499998888",
   "testimonialsRef": ["rio-verde-01", "rio-verde-02", "rio-verde-03"]

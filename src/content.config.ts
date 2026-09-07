@@ -15,9 +15,11 @@ const regions = defineCollection({
     testimonialsRef: z.array(z.string()).default([]),
     tagline: z.string(),
     startingPriceLabel: z.string(),
+    startingPriceValue: z.string(),
     dailyPriceHint: z.string(),
     gracePeriodDays: z.number().optional(),
     supportHoursLabel: z.string(),
+    supportHoursValue: z.string(),
   }),
 });
 
