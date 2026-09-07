@@ -12,7 +12,27 @@ const regions = defineCollection({
     heroSubheadline: z.string(),
     protectedResidentsCount: z.number(),
     whatsappNumber: z.string(),
+    testimonialsRef: z.array(z.string()).default([]),
   }),
 });
 
-export const collections = { regions };
+const testimonials = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/testimonials" }),
+  schema: z.object({
+    name: z.string(),
+    city: z.string(),
+    quote: z.string(),
+    vehicle: z.string().optional(),
+  }),
+});
+
+const faq = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/faq" }),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { regions, testimonials, faq };

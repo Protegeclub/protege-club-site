@@ -3,11 +3,16 @@ import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import SocialProofCounter from "../components/SocialProofCounter.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 
 const region = await getEntry("regions", "rio-verde-go");
 if (!region) throw new Error("Região 'rio-verde-go' não encontrada em src/content/regions");
-const { heroHeadline, heroSubheadline, whatsappNumber } = region.data;
+const { heroHeadline, heroSubheadline, whatsappNumber, protectedResidentsCount, displayName, testimonialsRef } =
+  region.data;
 ---
 
 <BaseLayout
@@ -17,6 +22,10 @@ const { heroHeadline, heroSubheadline, whatsappNumber } = region.data;
   <Header whatsappNumber={whatsappNumber} />
   <main>
     <Hero headline={heroHeadline} subheadline={heroSubheadline} whatsappNumber={whatsappNumber} />
+    <SocialProofCounter count={protectedResidentsCount} regionName={displayName} />
+    <HowItWorks />
+    <Testimonials testimonialIds={testimonialsRef} />
+    <FAQ />
   </main>
   <Footer whatsappNumber={whatsappNumber} />
 </BaseLayout>

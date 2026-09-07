@@ -1,0 +1,43 @@
+---
+const steps = [
+  {
+    title: "Contrate em minutos",
+    description: "Sem burocracia, sem vistoria complicada. Você fala com um consultor e já sai protegido.",
+    icon: "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+  {
+    title: "Fale direto pelo WhatsApp",
+    description: "Um consultor humano acompanha você do primeiro contato até o acionamento, se precisar.",
+    icon: "M8 10.5h.01M12 10.5h.01M16 10.5h.01M21 12c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.29-1.08L3 21l1.08-3.71A8.96 8.96 0 013 12c0-4.97 4.03-9 9-9s9 4.03 9 9z",
+  },
+  {
+    title: "Pague menos todo mês",
+    description: "Mensalidades mais baixas que o seguro tradicional, com a mesma tranquilidade.",
+    icon: "M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182.553-.44 1.278-.659 2.003-.659.725 0 1.45.22 2.003.659l.549.412",
+  },
+  {
+    title: "Fique protegido 24h",
+    description: "Assistência para você e sua família sempre que precisar, todos os dias do ano.",
+    icon: "M9 12.75L11.25 15 15 9.75m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+  <h2 class="text-center text-3xl font-bold text-brand-navy sm:text-4xl">Como funciona</h2>
+  <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      steps.map((step) => (
+        <div class="flex flex-col items-center text-center">
+          <span class="flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d={step.icon} />
+            </svg>
+          </span>
+          <h3 class="mt-4 text-lg font-semibold text-brand-navy">{step.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">{step.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
