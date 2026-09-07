@@ -1,7 +1,6 @@
 ---
 import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import SocialProofCounter from "../components/SocialProofCounter.astro";
 import HowItWorks from "../components/HowItWorks.astro";
@@ -34,7 +33,6 @@ const {
   title="Protege Club | Proteção Veicular em Rio Verde, GO a partir de R$69,90/mês"
   description="Você conquista o seu veículo, a Protege Club protege. Proteção veicular em Rio Verde, GO a partir de R$69,90/mês, com assistência 24h. Fale agora com um consultor."
 >
-  <Header whatsappNumber={whatsappNumber} />
   <main>
     <Hero
       regionDisplayName={displayName}
