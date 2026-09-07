@@ -1,0 +1,22 @@
+# env
+.env
+.env.production
+.dev.vars
+.dev.vars*
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+.output/
+
+# astro
+.astro/
+
+# cloudflare
+.wrangler/
+
+# editor/os
+.DS_Store
+Thumbs.db

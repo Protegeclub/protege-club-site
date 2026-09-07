@@ -1,0 +1,34 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  whatsappNumber: string;
+}
+
+const { headline, subheadline, whatsappNumber } = Astro.props;
+const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
+  "Olá! Quero saber mais sobre a proteção veicular da Protege Club."
+)}`;
+---
+
+<section class="relative overflow-hidden bg-brand-navy text-white">
+  <div class="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-20 sm:px-6 sm:py-28">
+    <p class="rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-brand-blue">
+      Proteção veicular em Rio Verde, GO
+    </p>
+    <h1 class="max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
+      {headline}
+    </h1>
+    <p class="max-w-xl text-lg text-white/80 sm:text-xl">
+      {subheadline}
+    </p>
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition hover:brightness-110"
+    >
+      Quero economizar agora
+    </a>
+  </div>
+</section>

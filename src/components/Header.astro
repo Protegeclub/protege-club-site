@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/brand/logo.png";
+
+interface Props {
+  whatsappNumber: string;
+}
+
+const { whatsappNumber } = Astro.props;
+const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
+  "Olá! Quero saber mais sobre a proteção veicular da Protege Club."
+)}`;
+---
+
+<header class="sticky top-0 z-50 bg-brand-navy/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+    <Image src={logo} alt="Protege Club" width={160} height={40} class="h-9 w-auto" />
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full bg-brand-orange px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110 sm:px-5 sm:text-base"
+    >
+      Falar no WhatsApp
+    </a>
+  </div>
+</header>

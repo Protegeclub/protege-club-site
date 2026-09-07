@@ -1,0 +1,22 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
+
+const region = await getEntry("regions", "rio-verde-go");
+if (!region) throw new Error("Região 'rio-verde-go' não encontrada em src/content/regions");
+const { heroHeadline, heroSubheadline, whatsappNumber } = region.data;
+---
+
+<BaseLayout
+  title="Protege Club | Proteção Veicular em Rio Verde, GO"
+  description="Proteção veicular em Rio Verde, GO com menos burocracia e mais economia. Fale agora com um consultor da Protege Club."
+>
+  <Header whatsappNumber={whatsappNumber} />
+  <main>
+    <Hero headline={heroHeadline} subheadline={heroSubheadline} whatsappNumber={whatsappNumber} />
+  </main>
+  <Footer whatsappNumber={whatsappNumber} />
+</BaseLayout>

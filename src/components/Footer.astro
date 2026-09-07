@@ -1,0 +1,22 @@
+---
+interface Props {
+  whatsappNumber: string;
+}
+
+const { whatsappNumber } = Astro.props;
+const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
+  "Olá! Quero saber mais sobre a proteção veicular da Protege Club."
+)}`;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-navy text-white/70">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <p class="text-sm">&copy; {year} Protege Club. Todos os direitos reservados.</p>
+    <div class="flex gap-6 text-sm">
+      <a href={waHref} target="_blank" rel="noopener noreferrer" class="hover:text-white">WhatsApp</a>
+      <a href="https://www.instagram.com/protege.club/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Instagram</a>
+      <a href="/politica-de-privacidade" class="hover:text-white">Política de Privacidade</a>
+    </div>
+  </div>
+</footer>

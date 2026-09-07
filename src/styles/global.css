@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Cromias institucionais - Manual de Identidade Visual Protege Club */
+  --color-brand-navy: #002a54;
+  --color-brand-blue: #25a9e1;
+  --color-brand-orange: #f19100;
+
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: white;
+  color: var(--color-brand-navy);
+}

@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getEntry } from "astro:content";
+
+const region = await getEntry("regions", "rio-verde-go");
+if (!region) throw new Error("Região 'rio-verde-go' não encontrada em src/content/regions");
+const { whatsappNumber } = region.data;
+---
+
+<BaseLayout
+  title="Política de Privacidade | Protege Club"
+  description="Política de privacidade da Protege Club."
+>
+  <Header whatsappNumber={whatsappNumber} />
+  <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <h1 class="text-3xl font-bold text-brand-navy">Política de Privacidade</h1>
+    <p class="mt-4 text-slate-600">
+      Conteúdo em elaboração. Esta página descreverá como a Protege Club coleta,
+      usa e protege os dados pessoais enviados através deste site, em conformidade
+      com a Lei Geral de Proteção de Dados (LGPD).
+    </p>
+  </main>
+  <Footer whatsappNumber={whatsappNumber} />
+</BaseLayout>
