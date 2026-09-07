@@ -1,0 +1,35 @@
+---
+import { getEntry } from "astro:content";
+import SavingsCalculator from "../islands/SavingsCalculator/SavingsCalculator";
+
+interface Props {
+  regionSlug: string;
+  whatsappNumber: string;
+}
+
+const { regionSlug, whatsappNumber } = Astro.props;
+const plan = await getEntry("plans", regionSlug);
+---
+
+{
+  plan && (
+    <section class="bg-slate-50 px-4 py-16 sm:px-6 sm:py-24">
+      <h2 class="text-center text-3xl font-bold text-brand-navy sm:text-4xl">
+        Quanto você pode economizar?
+      </h2>
+      <p class="mx-auto mt-3 max-w-xl text-center text-slate-600">
+        Arraste para o valor aproximado do seu veículo e veja a diferença na hora.
+      </p>
+      <div class="mt-10">
+        <SavingsCalculator
+          client:visible
+          rates={{
+            monthlyRatePercentOfVehicleValue: plan.data.monthlyRatePercentOfVehicleValue,
+            averageInsuranceRatePercentOfVehicleValue: plan.data.averageInsuranceRatePercentOfVehicleValue,
+          }}
+          whatsappNumber={whatsappNumber}
+        />
+      </div>
+    </section>
+  )
+}

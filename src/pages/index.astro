@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import SocialProofCounter from "../components/SocialProofCounter.astro";
 import HowItWorks from "../components/HowItWorks.astro";
+import SavingsCalculatorSection from "../components/SavingsCalculatorSection.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
@@ -24,6 +25,7 @@ const { heroHeadline, heroSubheadline, whatsappNumber, protectedResidentsCount, 
     <Hero headline={heroHeadline} subheadline={heroSubheadline} whatsappNumber={whatsappNumber} />
     <SocialProofCounter count={protectedResidentsCount} regionName={displayName} />
     <HowItWorks />
+    <SavingsCalculatorSection regionSlug={region.data.slug} whatsappNumber={whatsappNumber} />
     <Testimonials testimonialIds={testimonialsRef} />
     <FAQ />
   </main>

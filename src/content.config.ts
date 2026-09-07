@@ -35,4 +35,14 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { regions, testimonials, faq };
+const plans = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/plans" }),
+  schema: z.object({
+    regionSlug: z.string(),
+    monthlyRatePercentOfVehicleValue: z.number(),
+    averageInsuranceRatePercentOfVehicleValue: z.number(),
+    placeholder: z.boolean().default(false),
+  }),
+});
+
+export const collections = { regions, testimonials, faq, plans };
