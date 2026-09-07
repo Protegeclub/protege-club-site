@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getEntry } from "astro:content";
+
+const region = await getEntry("regions", "rio-verde-go");
+if (!region) throw new Error("Região 'rio-verde-go' não encontrada em src/content/regions");
+const { whatsappNumber } = region.data;
+---
+
+<BaseLayout
+  title="Recebemos seu contato | Protege Club"
+  description="Obrigado por entrar em contato com a Protege Club. Um consultor vai falar com você em breve."
+>
+  <Header whatsappNumber={whatsappNumber} />
+  <main class="mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center sm:px-6">
+    <h1 class="text-3xl font-bold text-brand-navy sm:text-4xl">Recebemos seus dados!</h1>
+    <p class="mt-4 text-lg text-slate-600">
+      Um consultor da Protege Club vai falar com você em breve pelo WhatsApp. Se preferir, já pode
+      chamar agora mesmo.
+    </p>
+    <a
+      href={`https://wa.me/${whatsappNumber.replace(/\D/g, "")}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-8 rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition hover:brightness-110"
+    >
+      Chamar no WhatsApp agora
+    </a>
+  </main>
+  <Footer whatsappNumber={whatsappNumber} />
+</BaseLayout>

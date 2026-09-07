@@ -3,19 +3,14 @@ import { computeSavings, type SavingsRates } from "../../lib/pricing";
 
 interface Props {
   rates: SavingsRates;
-  whatsappNumber: string;
 }
 
 const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 
-export default function SavingsCalculator({ rates, whatsappNumber }: Props) {
+export default function SavingsCalculator({ rates }: Props) {
   const [vehicleValue, setVehicleValue] = useState(40000);
 
   const result = useMemo(() => computeSavings(vehicleValue, rates), [vehicleValue, rates]);
-
-  const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
-    `Olá! Simulei no site um veículo de ${currency.format(vehicleValue)} e quero saber mais sobre a proteção veicular.`
-  )}`;
 
   return (
     <div class="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -59,9 +54,7 @@ export default function SavingsCalculator({ rates, whatsappNumber }: Props) {
       </p>
 
       <a
-        href={waHref}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#quero-proteger"
         class="mt-6 block w-full rounded-full bg-brand-orange py-3 text-center font-semibold text-white transition hover:brightness-110"
       >
         Quero confirmar meu valor real

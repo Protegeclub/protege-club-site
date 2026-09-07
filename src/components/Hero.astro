@@ -5,10 +5,7 @@ interface Props {
   whatsappNumber: string;
 }
 
-const { headline, subheadline, whatsappNumber } = Astro.props;
-const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Olá! Quero saber mais sobre a proteção veicular da Protege Club."
-)}`;
+const { headline, subheadline } = Astro.props;
 ---
 
 <section class="relative overflow-hidden bg-brand-navy text-white">
@@ -23,9 +20,7 @@ const waHref = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encode
       {subheadline}
     </p>
     <a
-      href={waHref}
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#quero-proteger"
       class="rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition hover:brightness-110"
     >
       Quero economizar agora

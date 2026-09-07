@@ -4,10 +4,9 @@ import SavingsCalculator from "../islands/SavingsCalculator/SavingsCalculator";
 
 interface Props {
   regionSlug: string;
-  whatsappNumber: string;
 }
 
-const { regionSlug, whatsappNumber } = Astro.props;
+const { regionSlug } = Astro.props;
 const plan = await getEntry("plans", regionSlug);
 ---
 
@@ -27,7 +26,6 @@ const plan = await getEntry("plans", regionSlug);
             monthlyRatePercentOfVehicleValue: plan.data.monthlyRatePercentOfVehicleValue,
             averageInsuranceRatePercentOfVehicleValue: plan.data.averageInsuranceRatePercentOfVehicleValue,
           }}
-          whatsappNumber={whatsappNumber}
         />
       </div>
     </section>
